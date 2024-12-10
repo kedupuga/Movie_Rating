@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Recommendations</title>
 </head>
 <body>
-    <h1>Recommended Movies</h1>
+    <h1>Movie Recommendations</h1>
+    <p>Genre: <strong>{{ genre }}</strong></p>
     <ul>
-        {% for movie in recommended_movies %}
-            <li>{{ movie['title'] }} ({{ movie['genre'] }})</li>
+        {% for movie in movies %}
+        <li>{{ movie }}</li>
+        {% else %}
+        <li>No recommendations found for this genre.</li>
         {% endfor %}
     </ul>
-    <a href="/movies">Back to Movies List</a>
+    <br>
+    <a href="/">Go Back to Home</a>
 </body>
 </html>
