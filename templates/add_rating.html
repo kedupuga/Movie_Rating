@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Rating</title>
+</head>
+<body>
+    <h1>Add Rating for Movie ID {{ movie_id }}</h1>
+    <form method="POST">
+        <label for="rating">Rating (1-10):</label>
+        <input type="number" id="rating" name="rating" min="1" max="10" required>
+        <br>
+        <button type="submit">Submit Rating</button>
+    </form>
+    <br>
+    <a href="/movies/{{ movie_id }}">Back to Movie Details</a>
+</body>
+</html>
