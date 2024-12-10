@@ -9,15 +9,6 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# Fetch movie recommendations by genre
-def recommend_movies(genre):
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT title FROM movies WHERE genre LIKE ?", (f"%{genre}%",))
-    recommendations = [row["title"] for row in cursor.fetchall()]
-    conn.close()
-    return recommendations
-
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -25,7 +16,11 @@ def index():
 @app.route('/recommend', methods=["POST"])
 def recommend():
     genre = request.form.get("genre")
-    recommendations = recommend_movies(genre)
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT title FROM movies WHERE genre LIKE ?", (f"%{genre}%",))
+    recommendations = [row["title"] for row in cursor.fetchall()]
+    conn.close()
     return render_template("recommendations.html", genre=genre, movies=recommendations)
 
 @app.route('/add', methods=["GET", "POST"])
