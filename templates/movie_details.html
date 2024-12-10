@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie['title'] }} - Details</title>
+</head>
+<body>
+    <h1>{{ movie['title'] }}</h1>
+    <p><strong>Genre:</strong> {{ movie['genre'] }}</p>
+    <h2>Ratings</h2>
+    <ul>
+        {% for rating in ratings %}
+            <li>{{ rating['rating'] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/movies/{{ movie['id'] }}/add_rating">Add Rating</a>
+    <br>
+    <a href="/movies">Back to Movies List</a>
+</body>
+</html>
+
