@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies List</title>
+</head>
+<body>
+    <h1>All Movies</h1>
+    <a href="/add">Add a New Movie</a>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Actions</th>
+        </tr>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie['title'] }}</td>
+            <td>{{ movie['genre'] }}</td>
+            <td>
+                <a href="/update/{{ movie['id'] }}">Edit</a>
+                <a href="/delete/{{ movie['id'] }}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Go Back</a>
+</body>
+</html>
