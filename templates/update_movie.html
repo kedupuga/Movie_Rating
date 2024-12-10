@@ -13,9 +13,12 @@
         <label for="genre">Genre:</label>
         <input type="text" id="genre" name="genre" value="{{ movie['genre'] }}" required>
         <br><br>
+        <label for="rating">Rating (0-10):</label>
+        <input type="number" id="rating" name="rating" value="{{ movie['rating'] }}" step="0.1" min="0" max="10">
+        <br><br>
         <button type="submit">Update Movie</button>
     </form>
     <br>
-    <a href="/movies">Go Back</a>
+    <a href="/movies">Go Back to Movies List</a>
 </body>
 </html>
